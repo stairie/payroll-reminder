@@ -3,7 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.payroll" version="1.0.0">
   <name>Payroll Reminder</name>
-  <description>HPayroll reminder for submitting hours.</description>
+  <description>Payroll reminder for submitting hours.</description>
   <author href="http://adejonge.ca" email="stairie43@hotmail.comcom">Alistair DeJonge</author>
   <content src="index.html"/>
 
