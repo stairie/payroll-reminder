@@ -40,10 +40,35 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
+        var pushNotification = window.plugins.pushNotification;
+        pushNotification.register(app.successHandler, app.errorHandler,{"senderID","729271852433","ecb":"app.onNotificationGCM"});
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    successHandler: function(result){
+        alert('Callback Success! Result = ' + result)
+    },
+    errorHandler: function(error){
+        alert(error);
+    },
+    onNotificationGCML function(e){
+        switch(e.event){
+            case 'registered':
+                if(e.regid.length > 0){
+                    console.log("Regid " + e.regid);
+                    alert('registration id = ' + e.regid);
+                }
+            break;
+            case 'message':
+                // this is the actual push notification.
+                alert('message = ' + e.message + ' msgcnt = ' + e.msgcnt);
+            break;
+            default:
+                alert('An unknown GCM event has occurred');
+            break;
+        }
     }
 };
