@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<title>
+Payroll Reminder
+</title>
+<style type="text/css">
+body{
+background-color: #001122;
+}
+#payroll-date{
+
+}
+div{
+width: 50%;
+padding: 30px 0;
+margin: 50% auto;
+border: 1px #fff solid;
+border-radius: 25px;
+background-color:#000;
+text-align: center;
+color: #fff;
+font-weight: bold;
+font-size: 1.5em;
+}
+</style>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	app.initialize();
+</script>
+<script>
+function getPayrollDate(){
+	var date = new Date();
+	var day = date.getDate();
+	var dayOfWeek = date.getDay();
+	var payroll;
+	if(((day == 15 || day == 30) && (dayOfWeek > 0 && dayOfWeek < 6)) || ((day == 14 || day == 29 || day == 13 || day == 28)&& dayOfWeek == 5)){
+		var payroll = "You need to submit your payroll hours!!!";
+	}else{
+		var payroll = "You're all good!!!";
+	}
+	document.getElementById("payroll-date").innerHTML = payroll;
+}
+</script>
+<body onload="getPayrollDate();">
+<div>
+<span id="payroll-date"></span>
+</div>
+</body>
